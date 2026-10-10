@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07132f" />
+    <meta name="description" content="InvestiGenie brings multi-source data exploration and evidence-grounded AI investigations into one workflow." />
+    <title>InvestiGenie | Investigate across your data</title>
+    <link rel="icon" type="image/svg+xml" href="assets/investigenie-spark.svg" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="InvestiGenie home">
+        <img src="assets/investigenie-spark.svg" alt="" width="34" height="34" />
+        <span>InvestiGenie</span>
+      </a>
+      <a class="header-link" href="https://github.com/InvestiGenie/investigenie">View the project <span aria-hidden="true">↗</span></a>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-grid" aria-hidden="true"></div>
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> MULTI-SOURCE INVESTIGATION</p>
+          <h1 id="hero-title">Follow the evidence.<br /><span>Find the thread.</span></h1>
+          <p class="hero-description">Explore events across your data sources, then use AI to investigate a question with evidence you can inspect.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="https://github.com/InvestiGenie/investigenie">Explore the code <span aria-hidden="true">↗</span></a>
+            <a class="button button-quiet" href="#how-it-works">How it works <span aria-hidden="true">↓</span></a>
+          </div>
+          <p class="hero-note">Open source · Bring your own data · Choose your AI provider</p>
+        </div>
+        <div class="hero-mark" aria-hidden="true">
+          <img src="assets/investigenie-spark.svg" alt="" />
+          <span class="mark-caption">EVIDENCE<br />IN CONTEXT</span>
+        </div>
+        <div class="hero-index" aria-hidden="true"><span>01</span><span>INVESTIGATION SYSTEM</span></div>
+      </section>
+
+      <section class="intro section-wrap" aria-labelledby="intro-title">
+        <p class="section-kicker">THE IDEA</p>
+        <div class="intro-content">
+          <h2 id="intro-title">One place to move from a signal to its supporting records.</h2>
+          <p>Operational evidence is spread across indices, tables, and services. InvestiGenie gives teams a shared way to connect sources, inspect matching records, and ask focused questions without handing a model unrestricted access to a data system.</p>
+        </div>
+      </section>
+
+      <section class="workflow" id="how-it-works" aria-labelledby="workflow-title">
+        <div class="section-wrap">
+          <div class="section-heading">
+            <div><p class="section-kicker">A CLEAR PATH THROUGH THE DATA</p><h2 id="workflow-title">Connect. Explore. Investigate.</h2></div>
+            <span class="section-count">01 — 03</span>
+          </div>
+          <div class="workflow-list">
+            <article class="workflow-row">
+              <span class="workflow-number">01</span>
+              <div><h3>Connect your sources</h3><p>Add Elasticsearch or ClickHouse connections. Credentials stay on the server and are encrypted in storage.</p></div>
+              <span class="workflow-tag">SOURCES</span>
+            </article>
+            <article class="workflow-row">
+              <span class="workflow-number">02</span>
+              <div><h3>Explore the records</h3><p>Use saved Data Views, time windows, source-side sorting, histograms, and cursor-based paging to inspect results.</p></div>
+              <span class="workflow-tag">DISCOVER</span>
+            </article>
+            <article class="workflow-row">
+              <span class="workflow-number">03</span>
+              <div><h3>Investigate a question</h3><p>Choose Data Views and a saved AI profile. The server validates structured filters, scans in batches, and returns findings with cited record IDs and scope.</p></div>
+              <span class="workflow-tag">EVIDENCE</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="principles section-wrap" aria-labelledby="principles-title">
+        <div class="principles-heading"><p class="section-kicker">BUILT AROUND INSPECTION</p><h2 id="principles-title">Useful answers should come with a trail.</h2></div>
+        <div class="principle-grid">
+          <article><span class="principle-mark mark-cyan" aria-hidden="true">↗</span><h3>Queries stay bounded</h3><p>AI proposes structured filters. InvestiGenie validates them and builds source queries; arbitrary model SQL is not accepted.</p></article>
+          <article><span class="principle-mark mark-violet" aria-hidden="true">⌕</span><h3>Evidence stays inspectable</h3><p>Results include source scope, record references, confidence, and caveats. Explore remains available for checking the underlying data.</p></article>
+          <article><span class="principle-mark mark-blue" aria-hidden="true">⟲</span><h3>Investigations span batches</h3><p>Matching records are scanned sequentially and compacted into bounded analysis cycles. More distinct evidence can mean more provider calls.</p></article>
+        </div>
+      </section>
+
+      <section class="privacy-band" aria-labelledby="privacy-title">
+        <div class="section-wrap privacy-content">
+          <div><p class="section-kicker">A NOTE ON TRUST</p><h2 id="privacy-title">Evidence is still data.</h2></div>
+          <p>The question and selected source examples are sent to the configured AI provider. Connection credentials are not. Review your provider’s retention and processing terms before using sensitive data. InvestiGenie does not yet include built-in user authentication or authorization; put it behind a trusted authenticated gateway.</p>
+        </div>
+      </section>
+
+      <section class="closing section-wrap" aria-labelledby="closing-title">
+        <img src="assets/investigenie-spark.svg" alt="" width="46" height="46" />
+        <div><p class="section-kicker">INVESTIGATE WITH CONTEXT</p><h2 id="closing-title">Start with the data you have.</h2></div>
+        <a class="button button-dark" href="https://github.com/InvestiGenie/investigenie">Visit GitHub <span aria-hidden="true">↗</span></a>
+      </section>
+    </main>
+
+    <footer class="site-footer"><a class="footer-brand" href="#top">InvestiGenie</a><span>Multi-source exploration. Evidence-grounded investigations.</span><a href="https://github.com/InvestiGenie/investigenie">GitHub <span aria-hidden="true">↗</span></a></footer>
+  </body>
+</html>
