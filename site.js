@@ -1,4 +1,7 @@
-const releaseList = document.querySelector('#release-list');
+const readyReleaseList = document.querySelector('#ready-release-list');
+const prereleaseList = document.querySelector('#prerelease-list');
+const readyReleaseEmpty = document.querySelector('#ready-release-empty');
+const prereleaseEmpty = document.querySelector('#prerelease-empty');
 const releaseStatus = document.querySelector('#release-status');
 const releaseFallback = document.querySelector('#release-fallback');
 
@@ -65,16 +68,26 @@ function renderRelease(release) {
 
 async function loadReleases() {
   try {
-    const response = await fetch('https://api.github.com/repos/InvestiGenie/investigenie/releases?per_page=6', {
-      headers: { Accept: 'application/vnd.github+json' },
-    });
+    const headers = { Accept: 'application/vnd.github+json' };
+    const [response, readyResponse] = await Promise.all([
+      fetch('https://api.github.com/repos/InvestiGenie/investigenie/releases?per_page=100', { headers }),
+      fetch('https://api.github.com/repos/InvestiGenie/investigenie/releases/latest', { headers }),
+    ]);
     if (!response.ok) throw new Error(`GitHub returned ${response.status}`);
+    if (!readyResponse.ok && readyResponse.status !== 404) {
+      throw new Error(`GitHub returned ${readyResponse.status}`);
+    }
 
-    const releases = (await response.json()).filter(({ draft }) => !draft).slice(0, 5);
-    if (releases.length === 0) throw new Error('No published releases');
+    const releases = (await response.json()).filter(({ draft, prerelease }) => !draft && prerelease);
+    const latestReady = readyResponse.ok ? await readyResponse.json() : null;
+    const latestPrerelease = releases[0];
+    if (!latestReady && !latestPrerelease) throw new Error('No published releases');
 
-    releaseList.replaceChildren(...releases.map(renderRelease));
-    releaseStatus.textContent = 'Recent builds and release notes from GitHub.';
+    readyReleaseList.replaceChildren(...(latestReady ? [renderRelease(latestReady)] : []));
+    prereleaseList.replaceChildren(...(latestPrerelease ? [renderRelease(latestPrerelease)] : []));
+    readyReleaseEmpty.hidden = Boolean(latestReady);
+    prereleaseEmpty.hidden = Boolean(latestPrerelease);
+    releaseStatus.textContent = 'Showing the latest release in each channel.';
   } catch {
     releaseStatus.hidden = true;
     releaseFallback.hidden = false;
